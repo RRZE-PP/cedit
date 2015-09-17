@@ -11,17 +11,21 @@ class PinTagLib {
 	def dynamicElem = { attrs, body ->
 
 		def template = ModelDisplayingTemplate.findByLabel(attrs.template)
-		def script = ModelGeneratingScript.findByLabel("script" in attrs ? attrs.script : template?.defaultScript)
+		def script = "script" in attrs ? ModelGeneratingScript.findByLabel(attrs.script) : template?.defaultScript
 		def availableParameters =  ["attr": attrs, "body": body(), "params": params, "session": session]
 
-		if(!template || (!script && template.script != ModelDisplayingTemplate.NOSCRIPT)){
-			out << "<!-- Error: unknown template or script! Could not render the dynamicElem -->";
+		if(!template){
+			out << "<!-- Error: unknown template! Could not render the dynamicElem -->";
 			return
 		}
 
-		if(script){
+		if(!script && script != ModelDisplayingTemplate.NOSCRIPT){
+			out << "<!-- Warning: no script passed to template, but no no-script value found! -->"
+		}
+
+		if(script && script != ModelDisplayingTemplate.NOSCRIPT){
 			//todo: irgendwie zwischenspeichern? registerScriptRuntimeEnv nutzen?
-			def sre = gscriptingService.createScriptRuntimeEnv("de.rrze.dynamictaglib."+(attrs?.script ?: template.defaultScript.label), script.content)
+			def sre = gscriptingService.createScriptRuntimeEnv("de.rrze.dynamictaglib."+script.label, script.content)
 			def model = sre.run(availableParameters)
 			if(model != null)
 				availableParameters.putAll(model)
