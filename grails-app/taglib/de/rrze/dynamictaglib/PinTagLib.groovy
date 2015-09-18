@@ -5,8 +5,11 @@ class PinTagLib {
 
 	static namespace = "dynTl"
 
+	//autowired beans
 	def gscriptingService
 	def groovyPagesTemplateEngine
+
+	static cachedScriptEnvironments = [:]
 
 	def dynamicElem = { attrs, body ->
 
@@ -19,14 +22,20 @@ class PinTagLib {
 			return
 		}
 
-		if(!script && script != ModelDisplayingTemplate.NOSCRIPT){
+		if(!script && script.label != ModelDisplayingTemplate.NOSCRIPT){
 			out << "<!-- Warning: no script passed to template, but no no-script value found! -->"
 		}
 
-		if(script && script != ModelDisplayingTemplate.NOSCRIPT){
-			//todo: irgendwie zwischenspeichern? registerScriptRuntimeEnv nutzen?
-			def sre = gscriptingService.createScriptRuntimeEnv("de.rrze.dynamictaglib."+script.label, script.content)
-			def model = sre.run(availableParameters)
+		if(script && script.label != ModelDisplayingTemplate.NOSCRIPT){
+			def envLabel = "de.rrze.dynamictaglib."+script.label
+
+			if(!(envLabel in cachedScriptEnvironments) || cachedScriptEnvironments[envLabel] < script.lastUpdated){
+				//possible lost update here!
+				cachedScriptEnvironments[envLabel] = script.lastUpdated
+				gscriptingService.registerScriptRuntimeEnv(envLabel, script.content)
+			}
+
+			def model = gscriptingService.run(envLabel, availableParameters)
 			if(model != null)
 				availableParameters.putAll(model)
 		}

@@ -5,6 +5,8 @@ class ModelGeneratingScript {
 	String  label
 	String  content
 
+	Date lastUpdated
+
 	static constraints = {
 		label (nullable:false,
 		blank:false,
