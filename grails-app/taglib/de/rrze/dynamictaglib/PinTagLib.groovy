@@ -15,6 +15,8 @@ class PinTagLib {
 
 		def template = null
 		def script = null
+		def availableParameters =  ["attrs": attrs, "body": body(), "params": params, "session": session]
+		def origData = ["attrs": attrs.clone(), "body": body(), "params": params.clone()]
 
 		if("id" in attrs)
 			template = ModelDisplayingTemplate.get(attrs.id)
@@ -28,8 +30,7 @@ class PinTagLib {
 		else
 			script = template?.defaultScript
 
-		def availableParameters =  ["attr": attrs, "body": body(), "params": params, "session": session]
-
+		//check for errors
 		if(!template){
 			out << "<!-- Error: unknown template! Could not render the element -->";
 			return
@@ -39,6 +40,7 @@ class PinTagLib {
 			out << "<!-- Warning: no script passed to template, but no no-script value found! -->"
 		}
 
+		//create and store script environment and run script
 		if(script && script != ModelDisplayingTemplate.NOSCRIPT){
 			def envLabel = "de.rrze.dynamictaglib."+script.label
 
@@ -49,9 +51,13 @@ class PinTagLib {
 			}
 
 			def model = gscriptingService.run(envLabel, availableParameters)
+
 			if(model != null)
 				availableParameters.putAll(model)
 		}
+
+		//store original data (unchanged by script, guaranteed)
+		availableParameters["origData"] = origData
 
 		def resultSW = new StringWriter()
 		def result = ""
