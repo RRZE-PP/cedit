@@ -13,9 +13,21 @@ class PinTagLib {
 
 	def templ = { attrs, body ->
 
+		def template = null
+		def script = null
 
-		def template = ModelDisplayingTemplate.findByLabel(attrs.template)
-		def script = "script" in attrs ? ModelGeneratingScript.findByLabel(attrs.script) : template?.defaultScript
+		if("id" in attrs)
+			template = ModelDisplayingTemplate.get(attrs.id)
+		else
+			template = ModelDisplayingTemplate.findByLabel(attrs.label)
+
+		if("scriptId" in attrs)
+			script = ModelGeneratingScript.get(id)
+		else if("scriptLabel" in attrs)
+			script = ModelGeneratingScript.findByLabel(attrs.scriptLabel)
+		else
+			script = template?.defaultScript
+
 		def availableParameters =  ["attr": attrs, "body": body(), "params": params, "session": session]
 
 		if(!template){
