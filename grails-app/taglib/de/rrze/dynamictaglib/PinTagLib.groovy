@@ -11,14 +11,15 @@ class PinTagLib {
 
 	static cachedScriptEnvironments = [:]
 
-	def dynamicElem = { attrs, body ->
+	def templ = { attrs, body ->
+
 
 		def template = ModelDisplayingTemplate.findByLabel(attrs.template)
 		def script = "script" in attrs ? ModelGeneratingScript.findByLabel(attrs.script) : template?.defaultScript
 		def availableParameters =  ["attr": attrs, "body": body(), "params": params, "session": session]
 
 		if(!template){
-			out << "<!-- Error: unknown template! Could not render the dynamicElem -->";
+			out << "<!-- Error: unknown template! Could not render the element -->";
 			return
 		}
 
@@ -50,7 +51,4 @@ class PinTagLib {
 		out << resultSW.toString()
 		resultSW.close()
 	}
-
-	//for backwards-compatability
-	def pin = dynamicElem;
 }
