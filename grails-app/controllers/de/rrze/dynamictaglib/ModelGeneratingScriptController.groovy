@@ -40,8 +40,10 @@ class ModelGeneratingScriptController {
     def cmeditor_open(Integer id){
         def instance = ModelGeneratingScript.findById(id)
 
-        if(instance == null)
+        if(instance == null){
             render ([status: "error", msg: "No such instance"] as JSON)
+            return
+        }
 
         render ([status:"success", result: instance] as JSON)
     }
@@ -64,8 +66,10 @@ class ModelGeneratingScriptController {
 
         def instance = ModelGeneratingScript.findById(id)
 
-        if(instance == null)
+        if(instance == null){
             render ([status: "error", msg: "Invalid script id provided"] as JSON)
+            return
+        }
 
         instance.content = params.content
         instance.label = params.label
@@ -76,10 +80,12 @@ class ModelGeneratingScriptController {
     }
 
     def cmeditor_delete(Integer id){
-        def instance = ModelDisplayingTemplate.findById(id)
+        def instance = ModelGeneratingScript.findById(id)
 
-        if(instance == null)
+        if(instance == null){
             render ([status: "error", msg: "Invalid script id provided"] as JSON)
+            return
+        }
 
         instance.delete(flush:true)
 

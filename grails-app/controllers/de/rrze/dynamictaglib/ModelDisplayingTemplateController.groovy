@@ -43,8 +43,10 @@ class ModelDisplayingTemplateController {
 	def cmeditor_open(Integer id){
 		def instance = ModelDisplayingTemplate.findById(id)
 
-		if(instance == null)
+		if(instance == null){
 			render ([status: "error", msg: "No such instance"] as JSON)
+			return
+		}
 
 		render ([status:"success", result: instance] as JSON)
 	}
@@ -68,11 +70,15 @@ class ModelDisplayingTemplateController {
 		def instance = ModelDisplayingTemplate.findById(id)
 		def defaultScript = "defaultScript.id" in params ? ModelGeneratingScript.findById(params."defaultScript.id") : null
 
-		if(instance == null)
+		if(instance == null){
 			render ([status: "error", msg: "Invalid template id provided"] as JSON)
+			return
+		}
 
-		if("defaultScript.id" in params && params."defaultScript.id" != null && defaultScript == null)
+		if("defaultScript.id" in params && params."defaultScript.id" != null && defaultScript == null){
 			render ([status: "error", msg: "Invalid default script provided"] as JSON)
+			return
+		}
 
 		instance.content = params.content
 		instance.label = params.label
@@ -86,8 +92,10 @@ class ModelDisplayingTemplateController {
 	def cmeditor_delete(Integer id){
 		def instance = ModelDisplayingTemplate.findById(id)
 
-		if(instance == null)
+		if(instance == null){
 			render ([status: "error", msg: "Invalid template id provided"] as JSON)
+			return
+		}
 
 		instance.delete(flush:true)
 
