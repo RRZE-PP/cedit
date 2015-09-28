@@ -27,15 +27,47 @@
 				mapping="[name: 'label']">
 				<label for="defaultScript">
 					<g:message code="modelDisplayingTemplate.defaultScript.label" default="Default Script" />
-
 				</label>
-				<g:select id="defaultScript" name="defaultScript.id" from="${de.rrze.dynamictaglib.ModelGeneratingScript.list()}" optionKey="id" value="${modelDisplayingTemplateInstance?.defaultScript?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
+				<g:select id="defaultScript" name="defaultScript.id" from="${de.rrze.dynamictaglib.ModelGeneratingScript.list()}" optionKey="id" optionValue="${{it?.label}}" value="${modelDisplayingTemplateInstance?.defaultScript?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
+				<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modeldisplayingtemplate.reloadscriptlist', default: 'Refresh script list')}" onclick="refreshScriptList(); return false">⟳</a>
+
 			</cmeditor:tabs>
 
 			<script type="text/javascript">
+				//open specific template on loading if one is specified in the url
 				CMEditor.on("postInitialization", function(rootElem, options, instanceName){
 					this.open(${modelDisplayingTemplateInstance?.id})
 				});
+
+				function refreshScriptList(){
+					$.ajax('${createLink(action: "cmeditor_list", controller: "ModelGeneratingScript")}')
+						.done(function(data){
+							if(data.status && data.status === "success"){
+								var list = $("#defaultScript");
+								var listValue = list.val();
+
+								list.children().remove();
+								list.append($("<option/>"))
+								for(var i=0; i<data.result.length; i++){
+									var result = data.result[i];
+									var o = $("<option/>").attr("value", result.id).text(result.label);
+									list.append($("<option/>").attr("value", result.id).text(result.label))
+								}
+
+								list.val(listValue);
+
+								if(list.val() !== listValue){
+									CMEditor.getInstance("modeldisplayingtemplate").displayMessage("The previously set script is no longer available, the value was cleared!");
+									list.val("")
+								}
+							}else{
+								CMEditor.getInstance("modeldisplayingtemplate").displayMessage("Could not refresh list: " + data.msg);
+							}
+						})
+						.fail(function(jqXHR, textStatus, errorThrown){
+							CMEditor.getInstance("modeldisplayingtemplate").displayMessage("Could not refresh list: " + textStatus);
+						})
+				}
 			</script>
 		</div>
 	</body>
