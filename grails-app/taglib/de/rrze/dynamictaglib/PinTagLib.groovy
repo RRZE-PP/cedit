@@ -36,12 +36,8 @@ class PinTagLib {
 			return
 		}
 
-		if(!script && template.script != ModelDisplayingTemplate.NOSCRIPT){
-			out << "<!-- Warning: no script passed to template, but no no-script value found! -->"
-		}
-
 		//create and store script environment and run script
-		if(script && script != ModelDisplayingTemplate.NOSCRIPT){
+		if(script){
 			def envLabel = "de.rrze.dynamictaglib."+script.label
 
 			if(!(envLabel in cachedScriptEnvironments) || cachedScriptEnvironments[envLabel] < script.lastUpdated){

@@ -6,8 +6,6 @@ class ModelDisplayingTemplate {
 
 	ModelGeneratingScript defaultScript
 
-	final static String NOSCRIPT = "no-script"
-
 	static constraints = {
 		label blank: false, unique:true
 		content nullable:false, blank:false, maxSize: 512000

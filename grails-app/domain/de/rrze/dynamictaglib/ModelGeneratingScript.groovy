@@ -10,14 +10,7 @@ class ModelGeneratingScript {
 	static constraints = {
 		label (nullable:false,
 		blank:false,
-		unique:true,
-		validator: { val ->
-			if (val == ModelDisplayingTemplate.NOSCRIPT){
-				return [
-					'dynamictaglib.reservedLabel'
-				]
-			}
-		}
+		unique:true
 		)
 		content (nullable:false, blank:false,  maxSize: 512000)
 	}
