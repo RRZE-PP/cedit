@@ -67,6 +67,7 @@
 								editor.displayMessage("The preview could not be rendered");
 							});
 					});
+					editor.menu.addSubMenuEntry(actions, "Refresh script list", refreshScriptList);
 				});
 
 
