@@ -87,7 +87,12 @@ class ModelGeneratingScriptController {
             return
         }
 
-        instance.delete(flush:true)
+        try {
+            instance.delete(flush:true)
+        }catch(org.springframework.dao.DataIntegrityViolationException e){
+            render ([status: "error", msg: "This script is still referenced in a template and can't be deleted"] as JSON)
+            return
+        }
 
         render([status:"success"] as JSON)
     }
