@@ -1,6 +1,7 @@
 package de.rrze.dynamictaglib
 
 
+import org.apache.commons.lang.RandomStringUtils
 
 import static org.springframework.http.HttpStatus.*
 import grails.converters.JSON
@@ -21,10 +22,22 @@ class ModelDisplayingTemplateController {
 	}
 
 	def manage(ModelDisplayingTemplate modelDisplayingTemplateInstance) {
+		if(session["csrf-token"] == null)
+			session["csrf-token"] = RandomStringUtils.randomAlphanumeric(255)
+
 		if(modelDisplayingTemplateInstance == null)
 			render(view: "manage")
 		else
 			respond modelDisplayingTemplateInstance
+	}
+
+	def preview(ModelDisplayingTemplate modelDisplayingTemplateInstance) {
+		if(session["csrf-token"] && session["csrf-token"] == params["csrf-token"]){
+			respond modelDisplayingTemplateInstance
+		}else{
+			flash.message = "For security reasons, please visit the template management page first!"
+			redirect action: "index", method: "GET"
+		}
 	}
 
 	protected void notFound() {

@@ -34,10 +34,41 @@
 			</cmeditor:tabs>
 
 			<script type="text/javascript">
-				//open specific template on loading if one is specified in the url
 				CMEditor.on("postInitialization", function(rootElem, options, instanceName){
-					this.open(${modelDisplayingTemplateInstance?.id})
+					//open specific template on loading if one is specified in the url
+					this.open(${modelDisplayingTemplateInstance?.id});
+
+					var editor = CMEditor.getInstance("modeldisplayingtemplate");
+					var actions = editor.menu.addRootMenuEntry("Actions");
+					editor.menu.addSubMenuEntry(actions, "Preview (native)", function(){
+						var curId = editor.getCurDoc().idField;
+
+						if(curId === null){
+							editor.displayMessage("The document has to be saved before preview");
+							return;
+						}
+
+						var win = window.open('${createLink(action: "preview")}'+'/'+curId+'?csrf-token=${session["csrf-token"]}', 'Preview', "height=400,width=400");
+						win.focus();
+					});
+					editor.menu.addSubMenuEntry(actions, "Preview (inline)", function(){
+						var curId = editor.getCurDoc().idField;
+
+						if(curId === null){
+							editor.displayMessage("The document has to be saved before preview");
+							return;
+						}
+
+						$.ajax('${createLink(action: "preview")}'+'/'+curId+'?csrf-token=${session["csrf-token"]}', {dataType:"html"})
+							.done(function(data){
+								$("<div/>").append($(data).filter(".content")).dialog();
+							})
+							.fail(function(){
+								editor.displayMessage("The preview could not be rendered");
+							});
+					});
 				});
+
 
 				function refreshScriptList(){
 					$.ajax('${createLink(action: "cmeditor_list", controller: "ModelGeneratingScript")}')
