@@ -4,14 +4,13 @@ class ModelGeneratingScript {
 
 	String  label
 	String  content
+	ScriptInterpretingDSL defaultDSL
 
 	Date lastUpdated
 
 	static constraints = {
-		label (nullable:false,
-		blank:false,
-		unique:true
-		)
-		content (nullable:false, blank:false,  maxSize: 512000)
+		label blank:false, unique:true
+		content blank:false,  maxSize: 512000
+		defaultDSL nullable: true
 	}
 }
