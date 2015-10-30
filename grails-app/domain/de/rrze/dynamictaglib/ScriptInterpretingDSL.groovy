@@ -10,6 +10,6 @@ class ScriptInterpretingDSL {
 
     static constraints = {
 		label blank: false, unique:true
-		code nullable:false, blank:false, maxSize: 512000
+		code blank:false, maxSize: 512000
     }
 }
