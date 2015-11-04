@@ -16,24 +16,7 @@
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-		<div id="manage-scriptInterpretingDSL" class="content" role="main">
-			<h1><g:message code="default.manage.label" args="[entityName]" /></h1>
 
-			<cmeditor:tabs name="scriptinterpretingdsl"
-				ajax='[listURL: "${createLink(action: "cmeditor_list")}",
-				      getURL:    "${createLink(action: "cmeditor_open")}",
-				      updateURL: "${createLink(action: "cmeditor_save")}",
-				      deleteURL: "${createLink(action: "cmeditor_delete")}"]'
-				mapping="[name: 'label', content: 'code']"
-				options="[defaultMode:'groovy']">
-				<g:message code="scriptInterpretingDSL.handler.label" default="Handler" />: <input type="text" class="cmeditor-field" name="handler" />
-			</cmeditor:tabs>
-
-			<script type="text/javascript">
-				CMEditor.on("postInitialization", function(rootElem, options, instanceName){
-					this.open(${scriptInterpretingDSLInstance?.id})
-				});
-			</script>
-		</div>
+		<g:render template="editor"/>
 	</body>
 </html>
