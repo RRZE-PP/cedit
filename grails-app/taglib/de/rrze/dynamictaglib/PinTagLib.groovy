@@ -21,8 +21,8 @@ class PinTagLib {
 		def template = null
 		def script = null
 		def dsl = null
-		def availableParameters =  ["attrs": attrs, "body": body(), "params": params, "session": session]
-		def origData = ["attrs": attrs.clone(), "body": body(), "params": params.clone()]
+		def rawData = "data" in attrs ? attrs.data : [:]
+		def availableParameters =  ["data": rawData, "params": params, "body": body(), "session": session, "meta": [:]]
 
 		//get the required objects
 		if("id" in attrs)
@@ -56,13 +56,22 @@ class PinTagLib {
 			throw Exception("Unknown dsl label or id specified. Cannot create dsl for script.");
 
 
+		availableParameters.meta["templateId"] = template.id
+		availableParameters.meta["templateLabel"] = template.label
+
 		//create and store script environment and run script
 		if(script){
 			def dslProviderLabel = "default"
 
+			availableParameters.meta["scriptId"] = script.id
+			availableParameters.meta["scriptLabel"] = script.label
+
 			//instanciate a DSLProvider, if the script requires a special dsl
 			if(dsl != null){
 				dslProviderLabel = "de.rrze.dynamictaglib."+dsl.label
+
+				availableParameters.meta["dslId"] = dsl.id
+				availableParameters.meta["dslLabel"] = dsl.label
 
 				if(!(dslProviderLabel in cachedDSLProviders) || cachedDSLProviders[dslProviderLabel] < dsl.lastUpdated){
 					//possible lost update here!
@@ -83,15 +92,14 @@ class PinTagLib {
 					gscriptingService.registerScriptRuntimeEnv(envLabel, script.content, dslProviderLabel)
 			}
 
-			def model = gscriptingService.run(envLabel, availableParameters)
-
-			if(model != null)
-				availableParameters.putAll(model)
+			try {
+				def result = gscriptingService.run(envLabel, availableParameters)
+				availableParameters.meta["scriptFailed"] = result == false
+			}catch (Exception e){
+				availableParameters.meta["scriptFailed"] = true
+				availableParameters.meta["scriptException"] = e
+			}
 		}
-
-
-		//store original data (unchanged by script, guaranteed)
-		availableParameters["origData"] = origData
 
 
 		//write the output
