@@ -39,7 +39,7 @@ class DynamicDSLProvider implements grails.plugin.gscripting.dsl.IDslProvider {
 
 	@Override
 	Object getDslInstance(Map scriptParams, IContext context, ScriptRuntimeEnv sre){
-		return gscriptingService.createScriptRuntimeEnv(dsl.label+"instanciatingScript", dsl.code).run()
+		return gscriptingService.createScriptRuntimeEnv(dsl.label+"instanciatingScript", dsl.code).run(context.callParams)
 	}
 }
 
