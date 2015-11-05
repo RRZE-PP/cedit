@@ -8,7 +8,7 @@
 		      updateURL: "${createLink(controller:"scriptInterpretingDSL", action: "cmeditor_save")}",
 		      deleteURL: "${createLink(controller:"scriptInterpretingDSL", action: "cmeditor_delete")}"]'
 		mapping="[name: 'label', content: 'code']"
-		options="[defaultMode:'groovy']">
+		options="[defaultMode:'text/x-groovy']">
 		<g:message code="scriptInterpretingDSL.handler.label" default="Handler" />: <input type="text" class="cmeditor-field" name="handler" />
 	</cmeditor:tabs>
 
