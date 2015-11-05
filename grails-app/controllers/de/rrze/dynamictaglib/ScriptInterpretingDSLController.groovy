@@ -71,8 +71,9 @@ class ScriptInterpretingDSLController {
             return
         }
 
-        instance.content = params.content
+        instance.code = params.code
         instance.label = params.label
+        instance.handler = params.handler
 
         instance.save(flush:true)
 
