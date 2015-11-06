@@ -73,7 +73,7 @@ class ScriptInterpretingDSLController {
 
         instance.code = params.code
         instance.label = params.label
-        instance.handler = params.handler
+        instance.closureName = params.closureName
 
         instance.save(flush:true)
 

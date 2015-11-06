@@ -9,6 +9,6 @@ class ModelDisplayingTemplate {
 	static constraints = {
 		label blank: false, unique:true
 		content blank:false, maxSize: 512000
-		defaultScript nullable:true, unique:false
+		defaultScript nullable:true
 	}
 }

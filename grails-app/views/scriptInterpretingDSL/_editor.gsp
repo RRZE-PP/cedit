@@ -9,7 +9,7 @@
 		      deleteURL: "${createLink(controller:"scriptInterpretingDSL", action: "cmeditor_delete")}"]'
 		mapping="[name: 'label', content: 'code']"
 		options="[defaultMode:'text/x-groovy']">
-		<g:message code="scriptInterpretingDSL.handler.label" default="Handler" />: <input type="text" class="cmeditor-field" name="handler" />
+		<g:message code="scriptInterpretingDSL.closureName.label" default="Handler" />: <input type="text" class="cmeditor-field" name="closureName" />
 	</cmeditor:tabs>
 
 	<script type="text/javascript">

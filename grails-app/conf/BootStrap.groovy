@@ -6,7 +6,7 @@ class BootStrap {
 
 	def init = { servletContext ->
 
-		def dsl = new ScriptInterpretingDSL([label:"testDSL", handler: "dashboard", code:'''
+		def dsl = new ScriptInterpretingDSL([label:"testDSL", closureName: "dashboard", code:'''
 class SimpleDSL implements GroovyInterceptable {
 
 	Map params

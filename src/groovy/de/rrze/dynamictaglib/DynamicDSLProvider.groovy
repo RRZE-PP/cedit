@@ -34,7 +34,7 @@ class DynamicDSLProvider implements grails.plugin.gscripting.dsl.IDslProvider {
 
 	@Override
 	String getHandler(){
-		return dsl.handler
+		return dsl.closureName
 	}
 
 	@Override

@@ -1,9 +1,9 @@
 package de.rrze.dynamictaglib
 
 class ModelGeneratingScript {
-
 	String  label
 	String  content
+
 	ScriptInterpretingDSL defaultDSL
 
 	Date lastUpdated
