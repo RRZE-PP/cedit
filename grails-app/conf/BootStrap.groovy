@@ -29,8 +29,9 @@ process()
    new SimpleDSL(ctx.callParams)
 }
 '''
-			]).save(failOnError:true)
-		def foo = new ModelGeneratingScript([label:"test", content:"process(){[testKey:'testVal']}"])
+			])
+		dsl.save(failOnError:true)
+		def foo = new ModelGeneratingScript([label:"test", content:"process(){[testKey:'testVal']}", defaultDSL: dsl])
 		foo.save(failOnError:true)
 		new ModelDisplayingTemplate([label:"test", content:"""
 This is the template content! The script '\${meta.scriptLabel}'
