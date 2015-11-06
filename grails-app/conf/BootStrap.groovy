@@ -30,6 +30,27 @@ process()
 }
 '''
 			])
+
+	new ScriptInterpretingDSL([label: "PersonDSL", handlerFunction: "Person", code:"""
+			class PersonDSL {
+
+    String surname
+    String firstname
+
+	def surname(String name){
+    	this.surname = name
+    }
+
+    def firstname(String name){
+    	this.firstname = name
+    }
+}
+
+
+process()
+{
+   new PersonDSL()
+}"""]).save(failOnError:true)
 		dsl.save(failOnError:true)
 		def foo = new ModelGeneratingScript([label:"test", content:"process(){[testKey:'testVal']}", defaultDSL: dsl])
 		foo.save(failOnError:true)
