@@ -31,7 +31,7 @@ process()
 '''
 			])
 
-	new ScriptInterpretingDSL([label: "PersonDSL", handlerFunction: "Person", code:"""
+	new ScriptInterpretingDSL([label: "PersonDSL", closureName: "Person", code:"""
 			class PersonDSL {
 
     String surname
