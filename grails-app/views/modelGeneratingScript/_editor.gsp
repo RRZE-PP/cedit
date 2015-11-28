@@ -7,7 +7,7 @@
 		      updateURL: "${createLink(controller: "modelGeneratingScript", action: "cmeditor_save")}",
 		      deleteURL: "${createLink(controller: "modelGeneratingScript", action: "cmeditor_delete")}"]'
 		mapping="[name: 'label']"
-		options="[defaultContent: 'process(){[someKey:1337]}']">
+		options="[defaultContent: 'process(){[someKey:1337]}', defaultMode:'text/x-groovy']">
 
 		<label for="defaultDSL">
 			<g:message code="modelDisplayingTemplate.defaultDSL.label" default="Default DSL" />
