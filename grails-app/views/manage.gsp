@@ -45,6 +45,7 @@
 		<g:set var="entityName" value="${message(code: 'scriptInterpretingDSL.label', default: 'ScriptInterpretingDSL')}" />
 			<g:render template="scriptInterpretingDSL/editor" />
 		</div>
+
 		<script>
 			$("#manage-modelDisplayingTemplate").resizable({
 				containment: "#flexContainer",
@@ -94,6 +95,15 @@
 				this.blur();
 			});
 
+            $(document).ready(function(){
+                CMEditor.getInstance("modelgeneratingscript").on("postPerformSaveDoc", function(){
+                    refreshScriptList(); //in case the script was renamed
+                });
+
+                CMEditor.getInstance("scriptinterpretingdsl").on("postPerformSaveDoc", function(){
+                    refreshDSLList(); //in case the dsl was renamed
+                });
+            });
 		</script>
 		&nbsp;
 	</body>
