@@ -11,7 +11,9 @@
 			<g:message code="modelDisplayingTemplate.defaultScript.label" default="Default Script" />
 		</label>
 		<g:select id="defaultScript" name="defaultScript.id" from="${de.rrze.dynamictaglib.ModelGeneratingScript.list()}" optionKey="id" optionValue="${{it?.label}}" value="${modelDisplayingTemplateInstance?.defaultScript?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
+
 		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modeldisplayingtemplate.reloadscriptlist', default: 'Refresh script list')}" onclick="refreshScriptList(); return false">⟳</a>
+		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modeldisplayingtemplate.editcurrentscript', default: 'Open this script for editing')}" onclick="openScriptForEditing();">✎</a>
 
 	</cmeditor:tabs>
 
@@ -81,6 +83,15 @@
 				.fail(function(jqXHR, textStatus, errorThrown){
 					CMEditor.getInstance("modeldisplayingtemplate").displayMessage("Could not refresh list: " + textStatus);
 				})
+		}
+
+		function openScriptForEditing(){
+			var scriptId = $("#defaultScript").val();
+
+			if(scriptId === "" || scriptId === null)
+				return;
+
+			CMEditor.getInstance("modelgeneratingscript").open(scriptId);
 		}
 	</script>
 </div>

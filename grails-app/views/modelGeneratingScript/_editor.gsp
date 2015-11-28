@@ -13,7 +13,9 @@
 			<g:message code="modelDisplayingTemplate.defaultDSL.label" default="Default DSL" />
 		</label>
 		<g:select id="defaultDSL" name="defaultDSL.id" from="${de.rrze.dynamictaglib.ScriptInterpretingDSL.list()}" optionKey="id" optionValue="${{it?.label}}" value="${modelGeneratingsScriptInstance?.defaultDSL?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
-		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modeldisplayingtemplate.reloaddsllist', default: 'Refresh DSL list')}" onclick="refreshDSLList(); return false">⟳</a>
+
+		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modelgeneratingscript.reloaddsllist', default: 'Refresh DSL list')}" onclick="refreshDSLList(); return false">⟳</a>
+		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modelgeneratingscript.editcurrentscript', default: 'Open this DSL for editing')}" onclick="openDSLForEditing();">✎</a>
 
 	</cmeditor:tabs>
 
@@ -51,6 +53,16 @@
 				.fail(function(jqXHR, textStatus, errorThrown){
 					CMEditor.getInstance("modelgeneratingscript").displayMessage("Could not refresh list: " + textStatus);
 				})
+		}
+
+
+		function openDSLForEditing(){
+			var dslId = $("#defaultDSL").val();
+
+			if(dslId === "" || dslId === null)
+				return;
+
+			CMEditor.getInstance("scriptinterpretingdsl").open(dslId);
 		}
 	</script>
 </div>
