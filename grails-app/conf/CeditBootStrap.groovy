@@ -2,7 +2,7 @@ import de.rrze.cedit.ModelDisplayingTemplate
 import de.rrze.cedit.ModelGeneratingScript
 import de.rrze.cedit.ScriptInterpretingDSL
 
-class BootStrap {
+class CeditBootStrap {
 
 	def init = { servletContext ->
 
