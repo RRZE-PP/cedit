@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="${grailsApplication?.config?.layout?.defaultLayout?:'main'}">
 		<g:set var="entityName" value="${message(code: 'modelDisplayingTemplate.label', default: 'ModelDisplayingTemplate')}" />
 		<title><g:message code="default.manage.label" args="[entityName]" /></title>
 		<asset:javascript src="cmeditor.js"/>

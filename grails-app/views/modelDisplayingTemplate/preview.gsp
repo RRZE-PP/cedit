@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="${grailsApplication?.config?.layout?.defaultLayout?:'main'}">
 		<title><g:message code="de.rrze.dynamictagbli.preview.label" default="Preview template ${modelDisplayingTemplateInstance?.label}" /></title>
 	</head>
 	<body>
