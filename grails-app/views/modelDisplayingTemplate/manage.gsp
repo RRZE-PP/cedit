@@ -1,4 +1,4 @@
-<%@ page import="de.rrze.dynamictaglib.ModelDisplayingTemplate" %>
+<%@ page import="de.rrze.cedit.ModelDisplayingTemplate" %>
 <!DOCTYPE html>
 <html>
 	<head>

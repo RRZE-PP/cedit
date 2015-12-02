@@ -1,5 +1,5 @@
 
-<%@ page import="de.rrze.dynamictaglib.ScriptInterpretingDSL" %>
+<%@ page import="de.rrze.cedit.ScriptInterpretingDSL" %>
 <!DOCTYPE html>
 <html>
 	<head>

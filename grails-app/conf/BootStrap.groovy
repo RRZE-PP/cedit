@@ -1,6 +1,6 @@
-import de.rrze.dynamictaglib.ModelDisplayingTemplate
-import de.rrze.dynamictaglib.ModelGeneratingScript
-import de.rrze.dynamictaglib.ScriptInterpretingDSL
+import de.rrze.cedit.ModelDisplayingTemplate
+import de.rrze.cedit.ModelGeneratingScript
+import de.rrze.cedit.ScriptInterpretingDSL
 
 class BootStrap {
 

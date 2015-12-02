@@ -1,9 +1,9 @@
-package de.rrze.dynamictaglib
+package de.rrze.cedit
 
-class PinTagLib {
+class TemplateTagLib {
 	static defaultEncodeAs = [taglib:'none']
 
-	static namespace = "dynTl"
+	static namespace = "cedit"
 
 	//autowired beans
 	def gscriptingService
@@ -68,7 +68,7 @@ class PinTagLib {
 
 			//instanciate a DSLProvider, if the script requires a special dsl
 			if(dsl != null){
-				dslProviderLabel = "de.rrze.dynamictaglib."+dsl.label
+				dslProviderLabel = "de.rrze.cedit."+dsl.label
 
 				availableParameters.meta["dslId"] = dsl.id
 				availableParameters.meta["dslLabel"] = dsl.label
@@ -80,7 +80,7 @@ class PinTagLib {
 				}
 			}
 
-			def envLabel = "de.rrze.dynamictaglib."+script.label
+			def envLabel = "de.rrze.cedit."+script.label
 
 			if(!(envLabel in cachedScriptEnvironments)  //create if new environment
 				|| cachedScriptEnvironments[envLabel] < script.lastUpdated //or if the script was updated in the db

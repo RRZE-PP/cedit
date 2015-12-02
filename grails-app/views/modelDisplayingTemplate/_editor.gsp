@@ -10,10 +10,10 @@
 		<label for="defaultScript">
 			<g:message code="modelDisplayingTemplate.defaultScript.label" default="Default Script" />
 		</label>
-		<g:select id="defaultScript" name="defaultScript.id" from="${de.rrze.dynamictaglib.ModelGeneratingScript.list()}" optionKey="id" optionValue="${{it?.label}}" value="${modelDisplayingTemplateInstance?.defaultScript?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
+		<g:select id="defaultScript" name="defaultScript.id" from="${de.rrze.cedit.ModelGeneratingScript.list()}" optionKey="id" optionValue="${{it?.label}}" value="${modelDisplayingTemplateInstance?.defaultScript?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
 
-		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modeldisplayingtemplate.reloadscriptlist', default: 'Refresh script list')}" onclick="refreshScriptList(); return false">⟳</a>
-		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modeldisplayingtemplate.editcurrentscript', default: 'Open this script for editing')}" onclick="openScriptForEditing();">✎</a>
+		<a href="#" title="${message(code: 'de.rrze.cedit.modeldisplayingtemplate.reloadscriptlist', default: 'Refresh script list')}" onclick="refreshScriptList(); return false">⟳</a>
+		<a href="#" title="${message(code: 'de.rrze.cedit.modeldisplayingtemplate.editcurrentscript', default: 'Open this script for editing')}" onclick="openScriptForEditing();">✎</a>
 
 	</cmeditor:tabs>
 

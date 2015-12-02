@@ -1,4 +1,4 @@
-<%@ page import="de.rrze.dynamictaglib.ModelGeneratingScript" %>
+<%@ page import="de.rrze.cedit.ModelGeneratingScript" %>
 <!DOCTYPE html>
 <html>
 	<head>

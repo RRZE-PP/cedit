@@ -12,10 +12,10 @@
 		<label for="defaultDSL">
 			<g:message code="modelDisplayingTemplate.defaultDSL.label" default="Default DSL" />
 		</label>
-		<g:select id="defaultDSL" name="defaultDSL.id" from="${de.rrze.dynamictaglib.ScriptInterpretingDSL.list()}" optionKey="id" optionValue="${{it?.label}}" value="${modelGeneratingsScriptInstance?.defaultDSL?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
+		<g:select id="defaultDSL" name="defaultDSL.id" from="${de.rrze.cedit.ScriptInterpretingDSL.list()}" optionKey="id" optionValue="${{it?.label}}" value="${modelGeneratingsScriptInstance?.defaultDSL?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
 
-		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modelgeneratingscript.reloaddsllist', default: 'Refresh DSL list')}" onclick="refreshDSLList(); return false">⟳</a>
-		<a href="#" title="${message(code: 'de.rrze.dynamictaglib.modelgeneratingscript.editcurrentscript', default: 'Open this DSL for editing')}" onclick="openDSLForEditing();">✎</a>
+		<a href="#" title="${message(code: 'de.rrze.cedit.modelgeneratingscript.reloaddsllist', default: 'Refresh DSL list')}" onclick="refreshDSLList(); return false">⟳</a>
+		<a href="#" title="${message(code: 'de.rrze.cedit.modelgeneratingscript.editcurrentscript', default: 'Open this DSL for editing')}" onclick="openDSLForEditing();">✎</a>
 
 	</cmeditor:tabs>
 

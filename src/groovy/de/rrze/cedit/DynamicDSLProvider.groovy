@@ -1,4 +1,4 @@
-package de.rrze.dynamictaglib
+package de.rrze.cedit
 
 import org.codehaus.groovy.control.CompilationUnit.PrimaryClassNodeOperation
 import grails.util.Holders
@@ -7,7 +7,7 @@ import grails.plugin.gscripting.GscriptingService
 import grails.plugin.gscripting.ScriptRuntimeEnv
 import grails.plugin.gscripting.dsl.IContext
 
-import de.rrze.dynamictaglib.ScriptInterpretingDSL
+import de.rrze.cedit.ScriptInterpretingDSL
 
 class DynamicDSLProvider implements grails.plugin.gscripting.dsl.IDslProvider {
 

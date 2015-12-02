@@ -1,4 +1,4 @@
-package de.rrze.dynamictaglib
+package de.rrze.cedit
 
 class ModelDisplayingTemplate {
 	String label

@@ -1,9 +1,9 @@
-<%@ page import="de.rrze.dynamictaglib.ModelGeneratingScript" %>
+<%@ page import="de.rrze.cedit.ModelGeneratingScript" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'appname', default: 'DynamicTaglib')}" />
+		<g:set var="entityName" value="${message(code: 'appname', default: 'Cedit')}" />
 		<title><g:message code="default.manage.label" args="[entityName]" /></title>
 		<asset:javascript src="cmeditor.js"/>
 		<asset:stylesheet href="cmeditor.css"/>
@@ -13,7 +13,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><a id="directionSwitch" role="button" href="#">⇔ <g:message code="de.rrze.dynamictaglib.manage.directionSwitch" default="Switch layout"/></a></li>
+				<li><a id="directionSwitch" role="button" href="#">⇔ <g:message code="de.rrze.cedit.manage.directionSwitch" default="Switch layout"/></a></li>
 			</ul>
 		</div>
 
