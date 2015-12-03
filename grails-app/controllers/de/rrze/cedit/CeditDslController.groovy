@@ -1,36 +1,34 @@
 package de.rrze.cedit
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.converters.JSON
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class ScriptInterpretingDSLController {
+class CeditDslController {
 
     static allowedMethods = [cmeditor_save: "POST"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ScriptInterpretingDSL.list(params), model:[scriptInterpretingDSLCount: ScriptInterpretingDSL.count()]
+        respond CeditDsl.list(params), model:[ceditDslCount: CeditDsl.count()]
     }
 
-    def show(ScriptInterpretingDSL scriptInterpretingDSLInstance) {
-        respond scriptInterpretingDSLInstance
+    def show(CeditDsl ceditDslInstance) {
+        respond ceditDslInstance
     }
 
-    def manage(ScriptInterpretingDSL scriptInterpretingDSLInstance) {
-        if(scriptInterpretingDSLInstance == null)
+    def manage(CeditDsl ceditDslInstance) {
+        if(ceditDslInstance == null)
             render(view: "manage")
         else
-            respond scriptInterpretingDSLInstance
+            respond ceditDslInstance
     }
 
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'scriptInterpretingDSL.label', default: 'ScriptInterpretingDSL'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ceditDsl.label', default: 'ceditdsl'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
@@ -38,7 +36,7 @@ class ScriptInterpretingDSLController {
     }
 
     def cmeditor_open(Integer id){
-        def instance = ScriptInterpretingDSL.findById(id)
+        def instance = CeditDsl.findById(id)
 
         if(instance == null){
             render ([status: "error", msg: "No such instance"] as JSON)
@@ -49,7 +47,7 @@ class ScriptInterpretingDSLController {
     }
 
     def cmeditor_list(){
-        def list = ScriptInterpretingDSL.findAll().collect({
+        def list = CeditDsl.findAll().collect({
             [id:it.id, label:it.label]
         })
 
@@ -58,13 +56,13 @@ class ScriptInterpretingDSLController {
 
     def cmeditor_save(Integer id){
         if(id == null){
-            def instance = new ScriptInterpretingDSL(params)
+            def instance = new CeditDsl(params)
             instance.save(flush:true)
             render ([status:"success", msg: "file was created and saved", newId: instance.id] as JSON)
             return
         }
 
-        def instance = ScriptInterpretingDSL.findById(id)
+        def instance = CeditDsl.findById(id)
 
         if(instance == null){
             render ([status: "error", msg: "Invalid dsl id provided"] as JSON)
@@ -81,7 +79,7 @@ class ScriptInterpretingDSLController {
     }
 
     def cmeditor_delete(Integer id){
-        def instance = ScriptInterpretingDSL.findById(id)
+        def instance = CeditDsl.findById(id)
 
         if(instance == null){
             render ([status: "error", msg: "Invalid dsl id provided"] as JSON)

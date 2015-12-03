@@ -1,8 +1,11 @@
 class CeditGrailsPlugin {
-    def version = "0.1.0"
+    def version = "0.2.0"
     def grailsVersion = "2.5 > *"
     def pluginExcludes = [
-        "grails-app/views/error.gsp"
+		"grails-app/views/index.gsp",
+        "grails-app/views/demo.gsp",
+		"grails-app/views/manage.gsp",
+		"grails-app/views/layouts/main.gsp"
     ]
     def title = "Cedit Plugin"
 	def author = "Frank Tröger"

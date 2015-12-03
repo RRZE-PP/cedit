@@ -1,10 +1,10 @@
 package de.rrze.cedit
 
-class ModelDisplayingTemplate {
+class CeditTemplate {
 	String label
 	String content
 
-	ModelGeneratingScript defaultScript
+	CeditScript defaultScript
 
 	static constraints = {
 		label blank: false, unique:true

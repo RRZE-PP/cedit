@@ -1,10 +1,10 @@
 package de.rrze.cedit
 
-class ModelGeneratingScript {
+class CeditScript {
 	String  label
 	String  content
 
-	ScriptInterpretingDSL defaultDSL
+	CeditDsl defaultDSL
 
 	Date lastUpdated
 

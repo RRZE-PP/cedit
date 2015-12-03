@@ -1,6 +1,6 @@
 package de.rrze.cedit
 
-class ScriptInterpretingDSL {
+class CeditDsl {
 
 	String label
 	String code

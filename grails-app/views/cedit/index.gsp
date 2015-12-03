@@ -1,4 +1,4 @@
-<%@ page import="de.rrze.cedit.ModelGeneratingScript" %>
+<%@ page import="de.rrze.cedit.CeditScript" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,7 +9,7 @@
 		<asset:stylesheet href="cmeditor.css"/>
 	</head>
 	<body>
-		<a href="#manage-scriptInterpretingDSL" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<a href="#manage-ceditDsl" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -38,26 +38,26 @@
 		</style>
 		<div id="flexContainer" style="display:flex; flex-wrap:wrap; flex-direction: column;">
 
-		<g:set var="entityName" value="${message(code: 'modelDisplayingTemplate.label', default: 'ModelDisplayingTemplate')}" />
-			<g:render template="modelDisplayingTemplate/editor" />
-		<g:set var="entityName" value="${message(code: 'modelGeneratingScript.label', default: 'ModelGeneratingScript')}" />
-			<g:render template="modelGeneratingScript/editor" />
-		<g:set var="entityName" value="${message(code: 'scriptInterpretingDSL.label', default: 'ScriptInterpretingDSL')}" />
-			<g:render template="scriptInterpretingDSL/editor" />
+		<g:set var="entityName" value="${message(code: 'ceditTemplate.label', default: 'ceditTemplate')}" />
+			<g:render template="/ceditTemplate/editor" />
+		<g:set var="entityName" value="${message(code: 'ceditScript.label', default: 'CeditScript')}" />
+			<g:render template="/ceditScript/editor" />
+		<g:set var="entityName" value="${message(code: 'ceditDsl.label', default: 'ceditdsl')}" />
+			<g:render template="/ceditDsl/editor" />
 		</div>
 
 		<script>
-			$("#manage-modelDisplayingTemplate").resizable({
+			$("#manage-ceditTemplate").resizable({
 				containment: "#flexContainer",
 				handles: "e",
 				minWidth: 490
 			});
-			$("#manage-modelGeneratingScript").resizable({
+			$("#manage-ceditScript").resizable({
 				containment: "#flexContainer",
 				handles: "e",
 				minWidth: 390
 			});
-			$("#manage-scriptInterpretingDSL").resizable({
+			$("#manage-ceditDsl").resizable({
 				containment: "#flexContainer",
 				handles: "e",
 				minWidth: 390
@@ -96,11 +96,11 @@
 			});
 
             $(document).ready(function(){
-                CMEditor.getInstance("modelgeneratingscript").on("postPerformSaveDoc", function(){
+                CMEditor.getInstance("ceditscript").on("postPerformSaveDoc", function(){
                     refreshScriptList(); //in case the script was renamed
                 });
 
-                CMEditor.getInstance("scriptinterpretingdsl").on("postPerformSaveDoc", function(){
+                CMEditor.getInstance("ceditdsl").on("postPerformSaveDoc", function(){
                     refreshDSLList(); //in case the dsl was renamed
                 });
             });

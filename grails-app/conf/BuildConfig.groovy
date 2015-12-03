@@ -19,10 +19,10 @@ grails.project.dependency.resolution = {
 		build(":tomcat:7.0.55.2"){
 			export = false
 		}
-		
-		build(":release:3.1.0", ":rest-client-builder:2.1.0") {
-			export = false
-		}
+
+		build ':release:3.1.1', ':rest-client-builder:2.1.1' {
+            export = false
+        }
 
 		compile(":scaffolding:2.1.2", ':cache:1.1.8', ":asset-pipeline:2.1.5"){
 			export = false
@@ -34,7 +34,7 @@ grails.project.dependency.resolution = {
 			export = false;
 		}
 
-		compile ":gscripting:0.0.3"
-		compile ":cmeditor:latest.release"
+		compile ":gscripting:0.0.8"
+		compile ":cmeditor:2.5.3"
 	}
 }
