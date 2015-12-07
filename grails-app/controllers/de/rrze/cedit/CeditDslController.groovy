@@ -2,9 +2,7 @@ package de.rrze.cedit
 
 import static org.springframework.http.HttpStatus.*
 import grails.converters.JSON
-import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
 class CeditDslController {
 
     static allowedMethods = [cmeditor_save: "POST"]
