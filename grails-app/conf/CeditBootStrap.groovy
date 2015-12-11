@@ -17,15 +17,15 @@ import grails.plugin.gscripting.dsl.impl.DefaultContext;
 class DefaultDsl implements GroovyInterceptable {
 
 	def grailsApplication
-	
+
 	Map scriptParams
 	IContext ctx
 	ScriptRuntimeEnv sre
-	
+
 	def log
 
 	def app = [:]
-	
+
 	public DefaultDsl(def grailsApplication, Map scriptParams, IContext ctx, ScriptRuntimeEnv sre) {
 		this.grailsApplication = grailsApplication
 		this.scriptParams = scriptParams
@@ -37,7 +37,7 @@ class DefaultDsl implements GroovyInterceptable {
 			this.app.put(it.propertyName, grailsApplication.mainContext.getBean(it.propertyName))
 		}
 	}
-	
+
 	@Override
 	public Object invokeMethod(String name, Object args) {
 //		log.trace "Calling ${name} with ${args} ..."
@@ -52,7 +52,7 @@ class DefaultDsl implements GroovyInterceptable {
 //		log.trace "Calling ${name} took ${endTime-startTime}ms"
 		return ret
 	}
-	
+
 	@Override
 	public Object getProperty(String name) {
 //		this.log.trace "Getting ${name} ..."
@@ -64,7 +64,7 @@ class DefaultDsl implements GroovyInterceptable {
 			return ctx.state[name]
 		throw new MissingPropertyException(name, this.getClass());
 	}
-	
+
 	@Override
 	public void setProperty(String name, Object args) {
 //		log.trace "Setting ${name} with ${args} ..."
@@ -77,7 +77,7 @@ class DefaultDsl implements GroovyInterceptable {
 		else throw new MissingPropertyException(name, this.getClass());
 	}
 
-	
+
 }
 
 process() {
@@ -90,7 +90,7 @@ process() {
 import grails.plugin.gscripting.dsl.IContext;
 
 class EmptyDsl implements GroovyInterceptable {
-	
+
 	Map scriptParams
 	IContext ctx
 
@@ -98,13 +98,13 @@ class EmptyDsl implements GroovyInterceptable {
 		this.scriptParams = scriptParams
 		this.ctx = ctx
 	}
-	
+
 }
 
 process() {
    new EmptyDsl(ctx.callParams.scriptParams, ctx.callParams.ctx)
 }''']).save(failOnError:true)
-		
+
 		// init demo script and template
 		def demoScript = CeditScript.findByLabel('ceditDemo')?:new CeditScript([label:'ceditDemo', defaultDSL: defaultDsl, content:'''
 cedit(){
@@ -144,7 +144,7 @@ This is the template content! The script "${meta.scriptLabel}"
 <raw>${meta}</raw>
 ''']).save(failOnError:true)
 	}
-	
+
 	def destroy = {
 	}
 }

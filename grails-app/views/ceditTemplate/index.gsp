@@ -23,25 +23,25 @@
 			<table>
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="label" title="${message(code: 'ceditTemplate.label.label', default: 'Label')}" />
-					
+
 						<g:sortableColumn property="content" title="${message(code: 'ceditTemplate.content.label', default: 'Content')}" />
-					
+
 						<th><g:message code="ceditTemplate.defaultScript.label" default="Default Script" /></th>
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${ceditTemplateInstanceList}" status="i" var="ceditTemplateInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${ceditTemplateInstance.id}">${fieldValue(bean: ceditTemplateInstance, field: "label")}</g:link></td>
-					
+
 						<td>${fieldValue(bean: ceditTemplateInstance, field: "content")}</td>
-					
+
 						<td>${fieldValue(bean: ceditTemplateInstance, field: "defaultScript")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

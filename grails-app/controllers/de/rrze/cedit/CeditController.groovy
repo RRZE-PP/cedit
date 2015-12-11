@@ -1,7 +1,7 @@
 package de.rrze.cedit
 
 class CeditController {
-	
+
 	static navigation = [
 		'app': [
 			visible: { true },
@@ -14,7 +14,7 @@ class CeditController {
 			]
 		]
 	]
-	
+
     def index() {
     }
 }
