@@ -1,0 +1,33 @@
+<h2>Cedit Demo</h2>
+
+<p>
+	This is the template content! The script "${meta.scriptLabel}"
+	<g:if test="${meta.scriptFailed}">
+		failed
+		<g:if test="${'scriptException' in meta}">
+			due to this exception: <br />
+			<pre>
+				${meta.scriptException}
+			</pre>
+		</g:if>
+	</g:if>
+	<g:else>
+		returned: ${data}
+	</g:else>
+</p>
+
+<h2>Debug</h2>
+<h3>data:</h3>
+<raw>${data}</raw>
+
+<h3>params:</h3>
+<raw>${params}</raw>
+
+<h3>body:</h3>
+<raw>${body}</raw>
+
+<h3>session:</h3>
+<raw>${session}</raw>
+
+<h3>meta:</h3>
+<raw>${meta}</raw>

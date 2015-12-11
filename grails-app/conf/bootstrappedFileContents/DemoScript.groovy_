@@ -1,0 +1,5 @@
+cedit(){
+	log.debug "ceditDemoScript called"
+	model.data['foo'] = 'bar'
+	return true
+}
