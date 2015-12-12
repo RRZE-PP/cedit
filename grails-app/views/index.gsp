@@ -118,7 +118,7 @@
 				</ul>
 				<h2>Other Pages:</h2>
 				<ul>
-					<li class="controller"><g:link url="manage">Manage</g:link></li>
+					<li class="controller"><g:link action="index" controller="cedit">Manage</g:link></li>
 					<li class="controller"><g:link url="demo">Demo</g:link></li>
 				</ul>
 			</div>
