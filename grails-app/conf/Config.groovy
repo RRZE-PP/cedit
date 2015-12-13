@@ -1,3 +1,6 @@
+// scaffolding templates configuration
+grails.scaffolding.templates.domainSuffix = 'Instance'
+
 // log4j configuration
 log4j.main = {
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
