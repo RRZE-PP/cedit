@@ -1,5 +1,7 @@
 package de.rrze.cedit
 
+import org.apache.commons.lang.RandomStringUtils
+
 class CeditController {
 
 	static navigation = [
@@ -16,5 +18,7 @@ class CeditController {
 	]
 
     def index() {
+		if(session["csrf-token"] == null)
+			session["csrf-token"] = RandomStringUtils.randomAlphanumeric(255)
     }
 }
