@@ -1,4 +1,8 @@
-// scaffolding templates configuration
+//this is needed for utf-8 characters on some management pages, don't ask me why
+grails.mime.types = [all: '*/*']
+
+//this is needed so that the respond method correctly injects instances in GSPs
+//please don't ask either. had to figure this out by trial and error.
 grails.scaffolding.templates.domainSuffix = 'Instance'
 
 // log4j configuration
