@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="${grailsApplication?.config?.layout?.defaultLayout?:'main'}">
-		<g:set var="entityName" value="${message(code: 'ceditDsl.label', default: 'ceditScript')}" />
+		<g:set var="entityName" value="${message(code: 'ceditDsl.label', default: 'ceditDSL')}" />
 		<title><g:message code="default.manage.label" args="[entityName]" /></title>
 		<asset:javascript src="cmeditor.js"/>
 		<asset:stylesheet href="cmeditor.css"/>

@@ -26,7 +26,7 @@
 
 						<g:sortableColumn property="label" title="${message(code: 'ceditDsl.label.label', default: 'Label')}" />
 
-						<g:sortableColumn property="handler" title="${message(code: 'ceditDsl.handler.label', default: 'Handler')}" />
+						<g:sortableColumn property="closureName" title="${message(code: 'ceditDsl.handler.label', default: 'Handler')}" />
 
 						<g:sortableColumn property="code" title="${message(code: 'ceditDsl.code.label', default: 'Code')}" />
 
@@ -38,7 +38,7 @@
 
 						<td><g:link action="show" id="${ceditDslInstance.id}">${fieldValue(bean: ceditDslInstance, field: "label")}</g:link></td>
 
-						<td>${fieldValue(bean: ceditDslInstance, field: "handler")}</td>
+						<td>${fieldValue(bean: ceditDslInstance, field: "closureName")}</td>
 
 						<td>${fieldValue(bean: ceditDslInstance, field: "code")}</td>
 

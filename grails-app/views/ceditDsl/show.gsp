@@ -32,11 +32,11 @@
 				</li>
 				</g:if>
 
-				<g:if test="${ceditDslInstance?.handler}">
+				<g:if test="${ceditDslInstance?.closureName}">
 				<li class="fieldcontain">
 					<span id="content-label" class="property-label"><g:message code="ceditDsl.handler.label" default="Handler" /></span>
 
-						<span class="property-value" aria-labelledby="content-label"><g:fieldValue bean="${ceditDslInstance}" field="handler"/></span>
+						<span class="property-value" aria-labelledby="content-label"><g:fieldValue bean="${ceditDslInstance}" field="closureName"/></span>
 
 				</li>
 				</g:if>
