@@ -20,9 +20,6 @@
 
 	<script type="text/javascript">
 		CMEditor.on("postInitialization", function(rootElem, options, instanceName){
-			//open specific template on loading if one is specified in the url
-			this.open(${ceditTemplateInstance?.id});
-
 			var editor = CMEditor.getInstance("cedittemplate");
 			var actions = editor.menu.addRootMenuEntry("Actions");
 			editor.menu.addSubMenuEntry(actions, "Preview (native)", function(){

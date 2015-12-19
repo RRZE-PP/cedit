@@ -20,11 +20,6 @@
 	</cmeditor:tabs>
 
 	<script type="text/javascript">
-		CMEditor.on("postInitialization", function(rootElem, options, instanceName){
-			this.open(${ceditScriptInstance?.id})
-		});
-
-
 		function refreshDSLList(){
 			$.ajax('${createLink(action: "cmeditor_list", controller: "ceditDsl")}')
 				.done(function(data){

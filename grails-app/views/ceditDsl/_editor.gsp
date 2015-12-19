@@ -11,10 +11,4 @@
 		options="[defaultMode:'text/x-groovy']">
 		<g:message code="ceditDsl.closureName.label" default="Handler" />: <input type="text" class="cmeditor-field" name="closureName" />
 	</cmeditor:tabs>
-
-	<script type="text/javascript">
-		CMEditor.on("postInitialization", function(rootElem, options, instanceName){
-			this.open(${ceditDslInstance?.id})
-		});
-	</script>
 </div>

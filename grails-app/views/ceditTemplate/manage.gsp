@@ -18,5 +18,11 @@
 		</div>
 
 		<g:render template="editor"/>
+
+		<script type="text/javascript">
+			CMEditor.on("postInitialization", function(rootElem, options, instanceName){
+				this.open(${ceditTemplateInstance?.id})
+			});
+		</script>
 	</body>
 </html>
