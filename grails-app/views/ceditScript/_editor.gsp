@@ -15,7 +15,7 @@
 		<g:select id="defaultDSL" name="defaultDSL.id" from="${de.rrze.cedit.CeditDsl.list()}" optionKey="id" optionValue="${{it?.label}}" value="${ceditScriptInstance?.defaultDSL?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
 
 		<a href="#" title="${message(code: 'de.rrze.cedit.ceditscript.reloaddsllist', default: 'Refresh DSL list')}" onclick="refreshDSLList(); return false">⟳</a>
-		<a href="#" title="${message(code: 'de.rrze.cedit.ceditscript.editcurrentscript', default: 'Open this DSL for editing')}" onclick="openDSLForEditing();">✎</a>
+		<a href="#" title="${message(code: 'de.rrze.cedit.ceditscript.editcurrentscript', default: 'Open this DSL for editing')}" onclick="openDSLForEditing();"  class="quickOpenLink" style="display:none">✎</a>
 
 	</cmeditor:tabs>
 

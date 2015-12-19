@@ -1,3 +1,4 @@
+
 <div id="manage-ceditTemplate" class="content" role="main">
 	<h1><g:message code="default.manage.label" args="[entityName]" /></h1>
 
@@ -13,7 +14,7 @@
 		<g:select id="defaultScript" name="defaultScript.id" from="${de.rrze.cedit.CeditScript.list()}" optionKey="id" optionValue="${{it?.label}}" value="${ceditTemplateInstance?.defaultScript?.id}" class="cmeditor-field many-to-one" noSelection="['': '']"/>
 
 		<a href="#" title="${message(code: 'de.rrze.cedit.cedittemplate.reloadscriptlist', default: 'Refresh script list')}" onclick="refreshScriptList(); return false">⟳</a>
-		<a href="#" title="${message(code: 'de.rrze.cedit.cedittemplate.editcurrentscript', default: 'Open this script for editing')}" onclick="openScriptForEditing();">✎</a>
+		<a href="#" title="${message(code: 'de.rrze.cedit.cedittemplate.editcurrentscript', default: 'Open this script for editing')}"  onclick="openScriptForEditing();" class="quickOpenLink" style="display:none">✎</a>
 
 	</cmeditor:tabs>
 

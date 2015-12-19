@@ -47,6 +47,8 @@
 		</div>
 
 		<script>
+			$(".cmeditor .quickOpenLink").show();
+
 			$("#manage-ceditTemplate").resizable({
 				containment: "#flexContainer",
 				handles: "e",
