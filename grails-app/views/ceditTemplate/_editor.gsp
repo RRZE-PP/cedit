@@ -52,7 +52,7 @@
 					});
 			});
 			editor.menu.addSubMenuEntry(actions, "Refresh script list", refreshScriptList);
-		});
+		}, "cedittemplate");
 
 
 		function refreshScriptList(){
