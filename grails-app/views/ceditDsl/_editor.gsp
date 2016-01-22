@@ -7,7 +7,7 @@
 		      getURL:    "${createLink(controller:"ceditDsl", action: "cmeditor_open")}",
 		      updateURL: "${createLink(controller:"ceditDsl", action: "cmeditor_save")}",
 		      deleteURL: "${createLink(controller:"ceditDsl", action: "cmeditor_delete")}"]'
-		mapping="[name: 'label', content: 'code']"
+		mapping="[name: 'label', content: 'code', mode: 'fileType']"
 		options="[defaultMode:'text/x-groovy']">
 		<g:message code="ceditDsl.closureName.label" default="Handler" />: <input type="text" class="cmeditor-field" name="closureName" />
 	</cmeditor:tabs>

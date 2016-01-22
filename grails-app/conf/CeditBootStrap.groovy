@@ -12,10 +12,22 @@ class CeditBootStrap {
 		def demoScriptContent     = this.class.classLoader.getResourceAsStream('bootstrappedFileContents/DemoScript.groovy_').getText()
 		def demoTemplateContent   = this.class.classLoader.getResourceAsStream('bootstrappedFileContents/DemoTemplate.gsp_').getText()
 
-		def defaultDsl = CeditDsl.findByLabel('DefaultDsl')?:new CeditDsl([label:'DefaultDsl', closureName: 'cedit', code:defaultDSLContent]).save(failOnError:true)
-		def emptyDsl = CeditDsl.findByLabel('EmptyDsl')?:new CeditDsl([label: 'EmptyDsl', closureName: 'cedit', code:emptyDSLContent]).save(failOnError:true)
-		def demoScript = CeditScript.findByLabel('ceditDemoScript')?:new CeditScript([label:'ceditDemoScript', defaultDSL: defaultDsl, content:demoScriptContent]).save(failOnError:true)
-		def demoTemplate = CeditTemplate.findByLabel('ceditDemoTemplate')?:new CeditTemplate([label:'ceditDemoTemplate', defaultScript: demoScript, content:demoTemplateContent]).save(failOnError:true)
+		def defaultDsl = CeditDsl.findByLabel('DefaultDsl')?:new CeditDsl([label:'DefaultDsl',
+		                                                                   closureName: 'cedit',
+		                                                                   code:defaultDSLContent,
+		                                                                   fileType:"text/x-groovy"]).save(failOnError:true)
+		def emptyDsl = CeditDsl.findByLabel('EmptyDsl')?:new CeditDsl([label: 'EmptyDsl',
+		                                                               closureName: 'cedit',
+		                                                               code:emptyDSLContent,
+		                                                               fileType:"text/x-groovy"]).save(failOnError:true)
+		def demoScript = CeditScript.findByLabel('ceditDemoScript')?:new CeditScript([label:'ceditDemoScript',
+		                                                                              defaultDSL: defaultDsl,
+		                                                                              content:demoScriptContent,
+		                                                                              fileType:"text/x-groovy"]).save(failOnError:true)
+		def demoTemplate = CeditTemplate.findByLabel('ceditDemoTemplate')?:new CeditTemplate([label:'ceditDemoTemplate',
+		                                                                                      defaultScript: demoScript,
+		                                                                                      content:demoTemplateContent,
+		                                                                                      fileType:"application/x-ejs"]).save(failOnError:true)
 	}
 
 	def destroy = {

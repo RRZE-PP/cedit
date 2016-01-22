@@ -46,7 +46,7 @@ class CeditDslController {
 
     def cmeditor_list(){
         def list = CeditDsl.findAll().collect({
-            [id:it.id, label:it.label]
+            [id:it.id, label:it.label, folder:it.folder]
         })
 
         render ([status:"success", result: list] as JSON)
@@ -70,6 +70,8 @@ class CeditDslController {
         instance.code = params.code
         instance.label = params.label
         instance.closureName = params.closureName
+        instance.fileType = params.fileType
+        instance.folder = params.folder
 
         instance.save(flush:true)
 

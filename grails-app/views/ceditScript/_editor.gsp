@@ -6,7 +6,7 @@
 		      getURL:    "${createLink(controller: "ceditScript", action: "cmeditor_open")}",
 		      updateURL: "${createLink(controller: "ceditScript", action: "cmeditor_save")}",
 		      deleteURL: "${createLink(controller: "ceditScript", action: "cmeditor_delete")}"]'
-		mapping="[name: 'label']"
+		mapping="[name: 'label', mode: 'fileType']"
 		options='[defaultContent: "dashboard(){ data.someKey = 1337; }", defaultMode:"text/x-groovy"]'>
 
 		<label for="defaultDSL">

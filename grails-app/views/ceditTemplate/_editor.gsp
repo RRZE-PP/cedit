@@ -7,7 +7,7 @@
 		      getURL:    "${createLink(controller: "ceditTemplate", action: "cmeditor_open")}",
 		      updateURL: "${createLink(controller: "ceditTemplate", action: "cmeditor_save")}",
 		      deleteURL: "${createLink(controller: "ceditTemplate", action: "cmeditor_delete")}"]'
-		mapping="[name: 'label']">
+		mapping="[name: 'label', mode: 'fileType']">
 		<label for="defaultScript">
 			<g:message code="ceditTemplate.defaultScript.label" default="Default Script" />
 		</label>

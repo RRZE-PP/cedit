@@ -8,9 +8,14 @@ class CeditDsl {
 
 	Date lastUpdated
 
+	//For cmeditor
+	String fileType
+	String folder
+
     static constraints = {
 		label blank: false, unique:true
 		code blank:false, maxSize: 512000
 		closureName blank:false
+		folder nullable:true
     }
 }
