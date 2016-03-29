@@ -17,6 +17,7 @@ class CeditTagLib {
 
 		//workaround a bug in gscripting by getting the default dsl once before setting our own
 		gscriptingService.getDslProvider("default")
+		gscriptingService.registerDslProvider("de.rrze.cedit.default", new grails.plugin.gscripting.dsl.impl.DefaultDslProvider(grailsApplication))
 
 		def template = null
 		def script = null
@@ -61,7 +62,7 @@ class CeditTagLib {
 
 		//create and store script environment and run script
 		if(script){
-			def dslProviderLabel = "default"
+			def dslProviderLabel = "de.rrze.cedit.default"
 
 			model.meta["scriptId"] = script.id
 			model.meta["scriptLabel"] = script.label
