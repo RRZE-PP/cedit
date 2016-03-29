@@ -1,5 +1,5 @@
 class CeditGrailsPlugin {
-    def version = "0.3.0"
+    def version = "0.3.1"
     def grailsVersion = "2.5 > *"
     def pluginExcludes = [
 		"grails-app/views/index.gsp",
