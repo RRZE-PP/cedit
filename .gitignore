@@ -15,3 +15,4 @@ plugin.xml
 *.class
 .gradle/
 build/
+bin/
